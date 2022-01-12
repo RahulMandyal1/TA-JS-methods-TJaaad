@@ -25,7 +25,9 @@ let newstr = strings.join(" ");
 
 strings.shift();
 // - Find all the words that contain 'is' use string method 'includes'
-
+let filteris = strings.filter(element{
+   element.includes("is");
+});
 // - Find all the words that contain 'is' use string method 'indexOf'
 
 // - Check if all the numbers in numbers array are divisible by three use array method (every)
@@ -106,14 +108,37 @@ let  sumOfArray = replaceStrLength.reduce((accu = initialValue , element ) =>{
   { firstname: 'Jack', lastname: 'White' }
 ];
 // - Find all customers whose firstname starts with 'J'
-let firstNameWithJ =  filter(element =>{
-  //  return element.firstname.inc
+let firstNameWithJ =  customers.filter(element =>{
+  element.firstname.startsWith("j");
 })
 
 // - Create new array with only first name
+let customerFirstName =  customers.filter(element =>element.firstname)
 
 // - Create new array with all the full names (ex: "Joe Blogs")
-
+let customerFullname =  customers.filter(element => 
+  ${element.firstname} ${customers.lastname}
+  );
 // - Sort the array created above alphabetically
-
+[...customerFullname].sort();
 // - Create a new array that contains only user who has at least one vowel in the firstname.
+let vowelnameCustomer = customers.filter(element=>{
+
+
+if(
+element.firstname.toLowerCase().includes("a")||
+element.firstname.toLowerCase().includes("e") ||
+element.firstname.toLowerCase().includes("i") ||
+element.firstname.toLowerCase().includes("o") ||
+element.firstname.toLowerCase().includes("u") ||
+
+)
+{
+  return true;
+
+}
+else {
+  return false;
+  
+}
+});
