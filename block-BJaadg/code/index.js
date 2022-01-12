@@ -14,7 +14,9 @@ let indexOfIs = quote.indexOf("is");
 /*
 2. Find the character at the index indexOfIs (Problem 1) in quote.
 */
-indexOfIs.charAt(1);
+// dont get  the question
+// Refractor 
+quote.charAt(indexOfIs);
 /*
 3. Log the message saying `The index of first is in quote is 7`
 */
@@ -115,3 +117,6 @@ quote = quote.padEnd(30 , ".");
 /*
 21. Find out does quote, from, to starts with "A"
 */
+console.log(quote.startsWith("A"));
+console.log(from.startsWith("A"));
+console.log(to.startsWith("A"));
