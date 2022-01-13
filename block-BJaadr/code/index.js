@@ -1,37 +1,129 @@
 // NOTE: You can only use the (reduce) array method to solve this exercise:
 
 function countAllPeople() {
-  // your code goes here
+  return got.houses.reduce((acc,cv)=> {
+    acc += cv.people.length;
+    return acc;
+  },0)
 }
+
 
 function peopleByHouses() {
-  // your code goes here
-}
+   return  got.houses.reduce((acc,cv)=> {
+    acc[cv.name] = cv.people.length;
+    return acc;
+  },{})
+};
+
 
 function everyone() {
-  // your code goes here
+  
+  return got.houses.reduce((acc,cv)=> {
+   let people = cv.people.map(element=>{
+    //  acc.push(cv.houses.people[element].name)
+    return element.name;
+   });
+   acc.push(people);
+   return acc;
+  },[]).flat(Infinity);
 }
 
 function nameWithS() {
-  // your code goes here
+//    return got.houses.reduce((acc , cv)=> {
+    // let people = cv.people.filter(element=>{
+    //   //  acc.push(cv.houses.people[element].name)
+    //   return element.name.includes("s") || element.name.includes("s") ;
+    //  });
+    //  acc.push(people);
+    //  return acc;
+    return got.houses.reduce((acc,cv)=> {
+      let people = cv.people.reduce((acc,cv)=>{
+       //  acc.push(cv.houses.people[element].name)
+      //  return element.name.includes("s") || element.name.includes("S") ;;
+      if(cv.name.toLowerCase().includes("s")){
+        acc.push(cv.name);
+      }
+      return acc;
+      },[]);
+      acc.push(people);
+      return acc;
+     },[]).flat(Infinity);
+  // } ,[]);
 }
 
 function nameWithA() {
-  // your code goes here
+  return got.houses.reduce((acc , cv)=> {
+   // let people = cv.people.filter(element=>{
+   //   //  acc.push(cv.houses.people[element].name)
+   //   return element.name.includes("s") || element.name.includes("s") ;
+   //  });
+   //  acc.push(people);
+   //  return acc;
+   return got.houses.reduce((acc,cv)=> {
+     let people = cv.people.reduce((acc,cv)=>{
+     if(cv.name.toLowerCase().includes("a")){
+       acc.push(cv.name);
+      
+     }
+     return acc;
+     },[]);
+     acc.push(people);
+     return acc;
+    },[]).flat(Infinity);
+ } ,[]);
 }
+
+
 
 function surnameWithS() {
   // your code goes here
+  return got.houses.reduce((acc , cv)=> {
+    return got.houses.reduce((acc,cv)=> {
+      let people = cv.people.reduce((acc,cv)=>{
+      if(cv.name.split(" ")[1].includes("S")){
+        acc.push(cv.name);
+      }
+      return acc;
+      },[]);
+      acc.push(people);
+      return acc;
+     },[]).flat(Infinity);
+  } ,[]);
 }
 
+
 function surnameWithA() {
-  // your code goes here
+  return got.houses.reduce((acc , cv)=> {
+    return got.houses.reduce((acc,cv)=> {
+      let people = cv.people.reduce((acc,cv)=>{
+      if(cv.name.split(" ")[1].includes("A")){
+        acc.push(cv.name);
+      }
+      return acc;
+      },[]);
+      acc.push(people);
+      return acc;
+     },[]).flat(Infinity);
+  } ,[]);
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  return  got.houses.reduce((acc,cv)=> {
+    // return  cv.people.reduce((acc,cv)=> {
+    // let peoplename  = cv.people.name;
+    let people = cv.people.map(element=>{
+      //  acc.push(cv.houses.people[element].name)
+      return element.name;
+     });
+    acc[cv.name]= people;
+    return acc;
+
+
+  },{});
 }
 
+
+// {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
 // Testing your result after writing your function
 console.log(countAllPeople());
 // Output should be 33
@@ -63,3 +155,4 @@ console.log(surnameWithA());
 console.log(peopleNameOfAllHouses());
 // Output should be
 // {Arryns: ["Jon Arryn"], Baratheons: ["Robert Baratheon", "Stannis Baratheon", "Renly Baratheon", "Joffrey Baratheon", "Tommen Baratheon", "Myrcella Baratheon"], Dothrakis: ["Khal Drogo"], Freys: ["Walder Frey"], Greyjoys: ["Balon Greyjoy", "Theon Greyjoy", "Yara Greyjoy"], Lannisters: ["Tywin Lannister", "Tyrion Lannister", "Jaime Lannister", "Cersei Baratheon"], Redwyne: ["Olenna Tyrell"], Starks: ["Eddard Stark", "Benjen Stark", "Robb Stark", "Sansa Stark", "Arya Stark", "Brandon Stark", "Rickon Stark", "Jon Snow"], Targaryens: ["Daenerys Targaryen", "Viserys Targaryen"], Tullys: ["Catelyn Stark", "Lysa Arryn", "Edmure Tully", "Brynden Tully"], Tyrells: ["Margaery Baratheon", "Loras Tyrell"]}
+
