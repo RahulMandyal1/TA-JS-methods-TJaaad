@@ -1,35 +1,90 @@
 // NOTE: You can only use the (reduce) array method to solve this exercise:
 
 function countAllPeople() {
-  // your code goes here
+   return got.houses.reduce((acc , cv)=>{
+    acc+=cv.people.length;
+    return acc ;
+  },0)
 }
 
 function peopleByHouses() {
-  // your code goes here
+  return got.houses.reduce((acc , cv)=>{
+     acc[cv.name] = cv.people.length;
+     return acc;
+  },{})
 }
 
 function everyone() {
-  // your code goes here
+  return got.houses.reduce((acc , cv )=>{
+      let people = cv.people.reduce((array,peoplename)=>{
+        array.push(peoplename.name)
+        return array;
+      },[])
+      acc.push(people);
+      return acc;
+  }, []).flat(Infinity);
 }
 
 function nameWithS() {
-  // your code goes here
+  return got.houses.reduce((acc , cv )=>{
+    let people = cv.people.reduce((array,peoplename)=>{
+      if(peoplename.name.toLowerCase().includes("s")){
+        array.push(peoplename.name)
+      }
+      return array;
+    },[])
+    acc.push(people);
+    return acc;
+}, []).flat(Infinity);
 }
 
 function nameWithA() {
-  // your code goes here
+  return got.houses.reduce((acc , cv )=>{
+    let people = cv.people.reduce((array,peoplename)=>{
+      if(peoplename.name.toLowerCase().includes("a")){
+        array.push(peoplename.name)
+      }
+      return array;
+    },[])
+    acc.push(people);
+    return acc;
+}, []).flat(Infinity);
 }
 
 function surnameWithS() {
-  // your code goes here
+  return got.houses.reduce((acc , cv )=>{
+    let people = cv.people.reduce((array,peoplename)=>{
+      if(peoplename.name.split(' ')[1].includes("S")){
+        array.push(peoplename.name)
+      }
+      return array;
+    },[])
+    acc.push(people);
+    return acc;
+}, []).flat(Infinity);
 }
 
 function surnameWithA() {
-  // your code goes here
-}
+  return got.houses.reduce((acc , cv )=>{
+    let people = cv.people.reduce((array,peoplename)=>{
+      if(peoplename.name.split(' ')[1].includes("A")){
+        array.push(peoplename.name)
+      }
+      return array;
+    },[])
+    acc.push(people);
+    return acc;
+}, []).flat(Infinity);
+};
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  return  got.houses.reduce((acc,cv)=> {
+    let people = cv.people.map(element=>{
+      return element.name;
+     });
+    acc[cv.name]= people;
+    return acc;
+  },{});
 }
 
 // Testing your result after writing your function
