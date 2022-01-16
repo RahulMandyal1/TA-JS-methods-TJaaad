@@ -1,35 +1,88 @@
 // NOTE: You can not use reduce methods to solve this exercise
 
+// done using only map and  filter 
 function countAllPeople() {
-  // your code goes here
+  let  count= 0;
+    got.houses.map(element=>{
+    count +=element.people.length;
+  });
+ return count;
 }
 
 function peopleByHouses() {
-  // your code goes here
+  let output = {};
+  got.houses.map(house =>{
+   output [house.name] = house.people.length;
+  });
+  return output;
 }
 
 function everyone() {
-  // your code goes here
+  let everyoneName = [];
+  got.houses.filter(houses =>{
+    houses.people.map(people=>{
+      everyoneName.push(people.name)
+    })
+  })
+  return everyoneName;
 }
 
 function nameWithS() {
-  // your code goes here
+  let sNamesInPerson = [];
+  got.houses.map(house=>{
+    house.people.filter(people=>{
+      if(people.name.toLowerCase().includes("s")){
+        sNamesInPerson.push(people.name);
+      }                                                                                                                                                                     
+    })
+  })
+  return  sNamesInPerson;
 }
 
 function nameWithA() {
-  // your code goes here
+  let aNamesInPerson = [];
+  got.houses.map(house=>{
+    house.people.filter(people=>{
+      if(people.name.toLowerCase().includes("a")){
+        aNamesInPerson.push(people.name);
+      }                                                                                                                                                                     
+    })
+  })
+  return  aNamesInPerson;
 }
 
 function surnameWithS() {
-  // your code goes here
+  let surnameInPerson = [];
+  got.houses.map(house=>{
+    house.people.filter(people=>{
+      if(people.name.split(' ')[1].includes("S")){
+        surnameInPerson.push(people.name);
+      }                                                                                                                                                                     
+    })
+  })
+  return  surnameInPerson;
 }
 
 function surnameWithA() {
-  // your code goes here
+  let surnameInPerson = [];
+  got.houses.map(house=>{
+    house.people.filter(people=>{
+      if(people.name.split(' ')[1].includes("A")){
+        surnameInPerson.push(people.name);
+      }                                                                                                                                                                     
+    })
+  })
+  return  surnameInPerson;
 }
 
 function peopleNameOfAllHouses() {
-  // your code goes here
+  let peopleOfAllHouses = {};
+  got.houses.map(house=>{
+    house.people.map(peopleName=> {
+       peopleOfAllHouses[house.name] = [peopleName.name];
+    })
+  })
+  return peopleOfAllHouses;
 }
 
 // Testing your result after writing your function
