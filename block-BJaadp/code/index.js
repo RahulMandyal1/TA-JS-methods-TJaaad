@@ -119,15 +119,11 @@ Output:
 
 [['banana', 2], ['cherry', 3], ['orange', 3], ['apple', 2], ['fig', 1]]
 */
-// const output = fruitBasket.reduce((acc , cv)=>{
-//   if(acc[cv]){
-//    acc[cv] = ++acc[cv];
-//   }
-//   else {
-//     acc[cv] = 1;
-//   }
-//   return acc;
-// },[]);
+const output = Object.keys(repeatedElements).reduce((acc , cv)=> {
+
+  acc = acc.concat([cv,repeatedElements[cv]]) ;
+  return acc;
+})
 // console.log(output);
 
 
@@ -159,46 +155,72 @@ dataTwo.reduce((arr,cv)=>{
   // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 
 // Using reduce flat dataTwo array
+ function increment(num){
+   return num+1 ;
+ }
+ function double(num){
+  return num*2 ;
+}
+function decrement(num){
+  return num-1 ;
+}
 
-/*
+function triple(num){
+  return num*3 ;
+}
+function half(num){
+  return Math.round( num / 2) ;
+}
 
-// let pipeline = [
-//   increment,
-//   double,
-//   decrement,
-//   decrement,
-//   double,
-//   triple,
-//   half,
-//   increment,
-// ];
 
-/*
-Using the pipeline variable that contains the collection of functions, taking the initial value 3 find the output.
 
-NOTE: Initial value will be passed to first function the output of that function will be the input to next function.
 
-EXAMPLE:
-  initialValue - 3
-  increment(3) - return 4
-  double(4) - return 8
-  decrement(8) - return 7
+let pipeline = [
+  increment,
+  double,
+  decrement,
+  triple,
+  half,
+];
 
-  ...
-*/
+ let a = pipeline.reduce((acc ,cv)=>{
+  acc = cv(acc);
+  return acc;
+},3)
 
-// let pipeline2 = [
-//   increment,
-//   half,
-//   double,
-//   decrement,
-//   decrement,
-//   triple,
-//   double,
-//   triple,
-//   half,
-//   increment,
-//   triple,
-// ];
+console.log(a);
 
+// Using the pipeline variable that contains the collection of functions, taking the initial value 3 find the output.
+
+// NOTE: Initial value will be passed to first function the output of that function will be the input to next function.
+
+
+// EXAMPLE:
+//   initialValue - 3
+//   increment(3) - return 4
+//   double(4) - return 8
+//   decrement(8) - return 7
+
+//   ...
+
+
+let pipeline2 = [
+  increment,
+  half,
+  double,
+  decrement,
+  decrement,
+  triple,
+  double,
+  triple,
+  half,
+  increment,
+  triple,
+];
+let b = pipeline2.reduce((acc ,cv)=>{
+  acc = cv(acc);
+  return acc;
+},8)
+
+console.log(b);
 // Find the output using pipeline2 the initial value if 8
